@@ -32,7 +32,7 @@ func (d *Datum) AddString(key string, value string) *Datum {
 		d[string_values] = make([]interface{}, 0)
 	}
 	d[string_values] = append(d[string_values],
-		                               [2]interface{}{key, value})
+									   [2]interface{}{key, value})
 	return d
 }
 
@@ -47,7 +47,7 @@ func (d *Datum) AddNum(key string, value float64) *Datum {
 		d[num_values] = make([]interface{}, 0)
 	}
 	d[num_values] = append(d[num_values],
-                         		   [2]interface{}{key, value})
+						 		   [2]interface{}{key, value})
 	return d
 }
 
@@ -62,6 +62,6 @@ func (d *Datum) AddBinary(key string, value []byte) *Datum {
 		d[binary_values] = make([]interface{}, 0)
 	}
 	d[binary_values] = append(d[binary_values],
-                         		   [2]interface{}{key, value})
+						 		   [2]interface{}{key, value})
 	return d
 }

@@ -28,8 +28,10 @@ for IDL in *.idl; do
 	IDL_HASH=`git log -1 --format=%H -- ${IDL}`
 	IDL_VER=`git describe ${IDL_HASH}`
 	NAMESPACE="$(capitalize $(basename "${IDL}" ".idl"))"
-	jenerator -l go "${IDL}" -n "" -o "${CLIENT_DIR}/lib" --idl-version $IDL_VER
+	jenerator -l go "${IDL}" -o "${CLIENT_DIR}/lib" --idl-version $IDL_VER
 done
 popd
 
 rm -rf "${JUBATUS_DIR}"
+
+find .| grep "\.go$" | xargs perl -i -pe"s/    /\t/g"

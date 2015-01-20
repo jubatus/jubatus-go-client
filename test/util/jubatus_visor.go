@@ -39,7 +39,7 @@ func NewJubatusProcess(command string, filepath string) (*JubatusProcess, error)
 	port := 9200
 	for {
 		cmd := exec.Command(command, "-f", filepath, "-p", fmt.Sprintf("%d", port))
-    cmd.Stderr = os.Stderr
+	cmd.Stderr = os.Stderr
 
 		stdout, err := cmd.StdoutPipe()
 		if err != nil {
