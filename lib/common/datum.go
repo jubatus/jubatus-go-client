@@ -15,7 +15,7 @@ func (d *Datum) String() string {
 }
 
 func NewDatum() Datum {
-	return Datum{}
+	return Datum{make([]interface{}, 0), make([]interface{}, 0), make([]interface{}, 0)}
 }
 
 // string
