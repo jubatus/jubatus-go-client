@@ -1,9 +1,13 @@
-// This file is auto-generated from recommender.idl(0.5.2-68-g68e898d) with jenerator version 0.6.4-32-g63e3219/feature/go_client
+// This file is auto-generated from recommender.idl with jenerator version 0.6.4-35-gd438373/feature/go_client
 // *** DO NOT EDIT ***
 
 package jubatus_client
+import (
+    common "../common"
+)
 
-type IdWithScore struct {
-	Id    string
-	Score float64
+type IDWithScore struct {
+    ID string
+    Score float64
 }
+
