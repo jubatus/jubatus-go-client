@@ -1,30 +1,26 @@
-// This file is auto-generated from burst.idl with jenerator version 0.6.4-35-gd438373/feature/go_client
+// This file is auto-generated from burst.idl(0.6.1-34-gb64049d) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
 // *** DO NOT EDIT ***
 
 package jubatus_client
-import (
-    common "../common"
-)
 
 type KeywordWithParams struct {
-    Keyword string
-    ScalingParam float64
-    Gamma float64
+	Keyword      string
+	ScalingParam float64
+	Gamma        float64
 }
 
 type Batch struct {
-    AllDataCount int32
-    RelevantDataCount int32
-    BurstWeight float64
+	AllDataCount      int32
+	RelevantDataCount int32
+	BurstWeight       float64
 }
 
 type Window struct {
-    StartPos float64
-    Batches []Batch
+	StartPos float64
+	Batches  []Batch
 }
 
 type Document struct {
-    Pos float64
-    Text string
+	Pos  float64
+	Text string
 }
-

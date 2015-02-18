@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	common "../lib/common"
-	recommender "../lib/recommender"
+	common "github.com/jubatus/jubatus-go-client/lib/common"
+	recommender "github.com/jubatus/jubatus-go-client/lib/recommender"
 	util "./util"
 )
 
@@ -108,7 +108,7 @@ func TestCompleteRowFromID(t *testing.T) {
 		cli.UpdateRow(fmt.Sprintf("a%d", i), d)
 	}
 
-	result := cli.CompleteRowFromId("a20")
+	result := cli.CompleteRowFromID("a20")
 	if 100 != len(result.NumValues()) {
 		t.Errorf("invalid result length")
 		t.FailNow()
@@ -127,7 +127,7 @@ func TestCompleteRowFromDatum(t *testing.T) {
 		cli.UpdateRow(fmt.Sprintf("a%d", i), d)
 	}
 
-	result := cli.CompleteRowFromId("a20")
+	result := cli.CompleteRowFromID("a20")
 	if 100 != len(result.NumValues()) {
 		t.Errorf("invalid result length")
 		t.FailNow()
