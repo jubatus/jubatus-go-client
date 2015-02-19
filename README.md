@@ -15,25 +15,25 @@ package main
 
 import (
 	"fmt"
-	jubatus "github.com/jubatus/jubatus-go-client/lib/classifier"
-	jubacommon "../lib/common"
+	classifier "github.com/jubatus/jubatus-go-client/lib/classifier"
+	common "github.com/jubatus/jubatus-go-client/lib/common"
 )
 
 func main() {
-	cli, err := jubatus.NewClassifierClient("localhost:9199", "hoge")
+	cli, err := classifier.NewClassifierClient("localhost:9199", "hoge")
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
-	datum1 := jubacommon.NewDatum()
+	datum1 := common.NewDatum()
 	datum1.AddNum("a", 1)
-	cli.Train([]jubatus.LabeledDatum{jubatus.LabeledDatum{"fuga", datum1}})
+	cli.Train([]classifier.LabeledDatum{classifier.LabeledDatum{"fuga", datum1}})
 
-	datum2 := jubacommon.NewDatum()
+	datum2 := common.NewDatum()
 	datum2.AddNum("b", 1)
-	cli.Train([]jubatus.LabeledDatum{jubatus.LabeledDatum{"hoge", datum2}})
+	cli.Train([]classifier.LabeledDatum{classifier.LabeledDatum{"hoge", datum2}})
 
-	ret := cli.Classify([]jubacommon.Datum{datum1})
+	ret := cli.Classify([]common.Datum{datum1})
 	fmt.Println(ret)
 }
 ```
