@@ -1,7 +1,7 @@
 #!/bin/bash -ue
 
 JUBATUS_DIR="jubatus-generate"
-JUBATUS_BRANCH="feature/go_client"
+JUBATUS_BRANCH="master"
 CLIENT_DIR="$(cd $(dirname ${0}) && echo ${PWD})"
 
 [ $# -eq 0 ] || JUBATUS_BRANCH="${1}"
