@@ -1,4 +1,4 @@
-// This file is auto-generated from recommender.idl(0.5.2-68-g68e898d) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from recommender.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -109,8 +109,8 @@ func (c *RecommenderClient) CalcL2norm(row common.Datum) float64 {
 	return result
 }
 
-func (c *RecommenderClient) Save(id string) bool {
-	var result bool
+func (c *RecommenderClient) Save(id string) map[string]string {
+	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
@@ -121,15 +121,28 @@ func (c *RecommenderClient) Load(id string) bool {
 	return result
 }
 
-func (c *RecommenderClient) GetConfig() map[string]map[string]string {
-	var result map[string]map[string]string
+func (c *RecommenderClient) GetConfig() string {
+	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *RecommenderClient) GetStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
 func (c *RecommenderClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *RecommenderClient) GetProxyStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
 	return result
 }
 

@@ -1,4 +1,4 @@
-// This file is auto-generated from classifier.idl(0.6.1-18-gbb16715) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from classifier.idl(0.7.2-49-g5a6436d) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client

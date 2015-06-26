@@ -1,4 +1,4 @@
-// This file is auto-generated from graph.idl(0.5.4-179-gb59b61b) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from graph.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -160,8 +160,8 @@ func (c *GraphClient) CreateEdgeHere(edge_id int64, e Edge) bool {
 	return result
 }
 
-func (c *GraphClient) Save(id string) bool {
-	var result bool
+func (c *GraphClient) Save(id string) map[string]string {
+	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
@@ -172,15 +172,28 @@ func (c *GraphClient) Load(id string) bool {
 	return result
 }
 
-func (c *GraphClient) GetConfig() map[string]map[string]string {
-	var result map[string]map[string]string
+func (c *GraphClient) GetConfig() string {
+	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *GraphClient) GetStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
 func (c *GraphClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *GraphClient) GetProxyStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
 	return result
 }
 
