@@ -1,4 +1,4 @@
-// This file is auto-generated from stat.idl(0.5.2-68-g68e898d) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from stat.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -78,8 +78,8 @@ func (c *StatClient) Clear() bool {
 	return result
 }
 
-func (c *StatClient) Save(id string) bool {
-	var result bool
+func (c *StatClient) Save(id string) map[string]string {
+	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
@@ -90,15 +90,28 @@ func (c *StatClient) Load(id string) bool {
 	return result
 }
 
-func (c *StatClient) GetConfig() map[string]map[string]string {
-	var result map[string]map[string]string
+func (c *StatClient) GetConfig() string {
+	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *StatClient) GetStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
 func (c *StatClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *StatClient) GetProxyStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
 	return result
 }
 

@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"testing"
 
+	util "./util"
 	common "github.com/jubatus/jubatus-go-client/lib/common"
 	recommender "github.com/jubatus/jubatus-go-client/lib/recommender"
-	util "./util"
 )
 
 func GetClient(c *util.JubatusProcess) (*recommender.RecommenderClient, error) {
@@ -130,6 +130,26 @@ func TestCompleteRowFromDatum(t *testing.T) {
 	result := cli.CompleteRowFromID("a20")
 	if 100 != len(result.NumValues()) {
 		t.Errorf("invalid result length")
+		t.FailNow()
+	}
+}
+
+func TestSave(t *testing.T) {
+	jubatus := _bootJubatus(t, "jubarecommender", "config/recommender.json")
+	defer jubatus.Kill()
+	cli := _getClient(t, jubatus)
+	if len(cli.Save("test")) != 1 {
+		t.Errorf("got invalid save response")
+		t.FailNow()
+	}
+}
+
+func TestGetStatus(t *testing.T) {
+	jubatus := _bootJubatus(t, "jubarecommender", "config/recommender.json")
+	defer jubatus.Kill()
+	cli := _getClient(t, jubatus)
+	if len(cli.GetStatus()) != 1 {
+		t.Errorf("got invalid status")
 		t.FailNow()
 	}
 }

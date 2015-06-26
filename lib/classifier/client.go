@@ -1,4 +1,4 @@
-// This file is auto-generated from classifier.idl(0.6.1-18-gbb16715) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from classifier.idl(0.7.2-49-g5a6436d) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -67,8 +67,8 @@ func (c *ClassifierClient) DeleteLabel(target_label string) bool {
 	return result
 }
 
-func (c *ClassifierClient) Save(id string) bool {
-	var result bool
+func (c *ClassifierClient) Save(id string) map[string]string {
+	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
@@ -79,15 +79,28 @@ func (c *ClassifierClient) Load(id string) bool {
 	return result
 }
 
-func (c *ClassifierClient) GetConfig() map[string]map[string]string {
-	var result map[string]map[string]string
+func (c *ClassifierClient) GetConfig() string {
+	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *ClassifierClient) GetStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
 func (c *ClassifierClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *ClassifierClient) GetProxyStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
 	return result
 }
 

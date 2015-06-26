@@ -1,4 +1,4 @@
-// This file is auto-generated from burst.idl(0.6.1-34-gb64049d) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from burst.idl(0.6.4-96-g66ed74d) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -90,8 +90,14 @@ func (c *BurstClient) RemoveAllKeywords() bool {
 	return result
 }
 
-func (c *BurstClient) Save(id string) bool {
+func (c *BurstClient) Clear() bool {
 	var result bool
+	c.client.Call("clear", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *BurstClient) Save(id string) map[string]string {
+	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
@@ -102,15 +108,28 @@ func (c *BurstClient) Load(id string) bool {
 	return result
 }
 
-func (c *BurstClient) GetConfig() map[string]map[string]string {
-	var result map[string]map[string]string
+func (c *BurstClient) GetConfig() string {
+	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *BurstClient) GetStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
 func (c *BurstClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *BurstClient) GetProxyStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
 	return result
 }
 

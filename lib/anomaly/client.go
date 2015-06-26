@@ -1,4 +1,4 @@
-// This file is auto-generated from anomaly.idl(0.5.2-68-g68e898d) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from anomaly.idl(0.7.2-50-gbcc1e21) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -75,8 +75,8 @@ func (c *AnomalyClient) GetAllRows() []string {
 	return result
 }
 
-func (c *AnomalyClient) Save(id string) bool {
-	var result bool
+func (c *AnomalyClient) Save(id string) map[string]string {
+	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
@@ -87,15 +87,28 @@ func (c *AnomalyClient) Load(id string) bool {
 	return result
 }
 
-func (c *AnomalyClient) GetConfig() map[string]map[string]string {
-	var result map[string]map[string]string
+func (c *AnomalyClient) GetConfig() string {
+	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *AnomalyClient) GetStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
 func (c *AnomalyClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *AnomalyClient) GetProxyStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
 	return result
 }
 
