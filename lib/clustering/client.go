@@ -1,4 +1,4 @@
-// This file is auto-generated from clustering.idl(0.6.1-17-g1bca359) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from clustering.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -77,8 +77,8 @@ func (c *ClusteringClient) Clear() bool {
 	return result
 }
 
-func (c *ClusteringClient) Save(id string) bool {
-	var result bool
+func (c *ClusteringClient) Save(id string) map[string]string {
+	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
@@ -89,15 +89,28 @@ func (c *ClusteringClient) Load(id string) bool {
 	return result
 }
 
-func (c *ClusteringClient) GetConfig() map[string]map[string]string {
-	var result map[string]map[string]string
+func (c *ClusteringClient) GetConfig() string {
+	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *ClusteringClient) GetStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
 func (c *ClusteringClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *ClusteringClient) GetProxyStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
 	return result
 }
 

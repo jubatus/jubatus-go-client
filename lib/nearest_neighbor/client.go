@@ -1,4 +1,4 @@
-// This file is auto-generated from nearest_neighbor.idl(0.5.4-186-g163c6bd) with jenerator version 0.6.4-39-g6dfab43/feature/go_client
+// This file is auto-generated from nearest_neighbor.idl(0.6.4-33-gf65b203) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -74,8 +74,15 @@ func (c *NearestNeighborClient) SimilarRowFromDatum(query common.Datum,
 	return result
 }
 
-func (c *NearestNeighborClient) Save(id string) bool {
-	var result bool
+func (c *NearestNeighborClient) GetAllRows() []string {
+	var result []string
+	c.client.Call("get_all_rows", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
+	return result
+}
+
+func (c *NearestNeighborClient) Save(id string) map[string]string {
+	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
@@ -86,15 +93,28 @@ func (c *NearestNeighborClient) Load(id string) bool {
 	return result
 }
 
-func (c *NearestNeighborClient) GetConfig() map[string]map[string]string {
-	var result map[string]map[string]string
+func (c *NearestNeighborClient) GetConfig() string {
+	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *NearestNeighborClient) GetStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
 func (c *NearestNeighborClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
+	return result
+}
+
+func (c *NearestNeighborClient) GetProxyStatus() map[string]map[string]string {
+	var result map[string]map[string]string
+	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
+		&result)
 	return result
 }
 
