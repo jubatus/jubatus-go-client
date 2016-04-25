@@ -1,4 +1,4 @@
-// This file is auto-generated from classifier.idl(0.7.2-49-g5a6436d) with jenerator version 0.7.2-85-g1b6087f/fix-go-client
+// This file is auto-generated from classifier.idl(0.8.9-17-gd4c007f) with jenerator version 0.8.5-6-g5a2c923/master
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -41,8 +41,8 @@ func (c *ClassifierClient) Classify(data []common.Datum) [][]EstimateResult {
 	return result
 }
 
-func (c *ClassifierClient) GetLabels() []string {
-	var result []string
+func (c *ClassifierClient) GetLabels() map[string]int64 {
+	var result map[string]int64
 	c.client.Call("get_labels", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
