@@ -1,4 +1,4 @@
-// This file is auto-generated from regression.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.8.5-6-g5a2c923/develop
+// This file is auto-generated from weight.idl(0.9.0-24-gda61383) with jenerator version 0.8.5-6-g5a2c923/develop
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -11,12 +11,12 @@ import (
 	"github.com/ugorji/go/codec"
 )
 
-type RegressionClient struct {
+type WeightClient struct {
 	client rpc.Client
 	name   string
 }
 
-func NewRegressionClient(host string, name string) (*RegressionClient, error) {
+func NewWeightClient(host string, name string) (*WeightClient, error) {
 	conn, err := net.Dial("tcp", host)
 	if err != nil {
 		return nil, err
@@ -25,74 +25,73 @@ func NewRegressionClient(host string, name string) (*RegressionClient, error) {
 	mh.StructToArray = true
 	rpcCodec := codec.MsgpackSpecRpc.ClientCodec(conn, mh)
 	client := rpc.NewClientWithCodec(rpcCodec)
-	return &RegressionClient{*client, name}, nil
+	return &WeightClient{*client, name}, nil
 }
 
-func (c *RegressionClient) Train(train_data []ScoredDatum) int32 {
-	var result int32
-	c.client.Call("train", codec.MsgpackSpecRpcMultiArgs{c.name, train_data},
+func (c *WeightClient) Update(d common.Datum) []Feature {
+	var result []Feature
+	c.client.Call("update", codec.MsgpackSpecRpcMultiArgs{c.name, d}, &result)
+	return result
+}
+
+func (c *WeightClient) CalcWeight(d common.Datum) []Feature {
+	var result []Feature
+	c.client.Call("calc_weight", codec.MsgpackSpecRpcMultiArgs{c.name, d},
 		&result)
 	return result
 }
 
-func (c *RegressionClient) Estimate(estimate_data []common.Datum) []float64 {
-	var result []float64
-	c.client.Call("estimate", codec.MsgpackSpecRpcMultiArgs{c.name,
-		estimate_data}, &result)
-	return result
-}
-
-func (c *RegressionClient) Clear() bool {
+func (c *WeightClient) Clear() bool {
 	var result bool
 	c.client.Call("clear", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
-func (c *RegressionClient) Save(id string) map[string]string {
+func (c *WeightClient) Save(id string) map[string]string {
 	var result map[string]string
 	c.client.Call("save", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
 
-func (c *RegressionClient) Load(id string) bool {
+func (c *WeightClient) Load(id string) bool {
 	var result bool
 	c.client.Call("load", codec.MsgpackSpecRpcMultiArgs{c.name, id}, &result)
 	return result
 }
 
-func (c *RegressionClient) GetConfig() string {
+func (c *WeightClient) GetConfig() string {
 	var result string
 	c.client.Call("get_config", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
-func (c *RegressionClient) GetStatus() map[string]map[string]string {
+func (c *WeightClient) GetStatus() map[string]map[string]string {
 	var result map[string]map[string]string
 	c.client.Call("get_status", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
-func (c *RegressionClient) DoMix() bool {
+func (c *WeightClient) DoMix() bool {
 	var result bool
 	c.client.Call("do_mix", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
-func (c *RegressionClient) GetProxyStatus() map[string]map[string]string {
+func (c *WeightClient) GetProxyStatus() map[string]map[string]string {
 	var result map[string]map[string]string
 	c.client.Call("get_proxy_status", codec.MsgpackSpecRpcMultiArgs{c.name},
 		&result)
 	return result
 }
 
-func (c *RegressionClient) GetName() string {
+func (c *WeightClient) GetName() string {
 	return c.name
 }
 
-func (c *RegressionClient) SetName(new_name string) {
+func (c *WeightClient) SetName(new_name string) {
 	c.name = new_name
 }
 
-func (c *RegressionClient) GetClient() rpc.Client {
+func (c *WeightClient) GetClient() rpc.Client {
 	return c.client
 }
