@@ -1,4 +1,4 @@
-// This file is auto-generated from clustering.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.8.5-6-g5a2c923/develop
+// This file is auto-generated from clustering.idl(0.9.4-18-g4935b2b) with jenerator version 0.9.4-42-g70f7539/master
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -28,7 +28,7 @@ func NewClusteringClient(host string, name string) (*ClusteringClient, error) {
 	return &ClusteringClient{*client, name}, nil
 }
 
-func (c *ClusteringClient) Push(points []common.Datum) bool {
+func (c *ClusteringClient) Push(points []IndexedPoint) bool {
 	var result bool
 	c.client.Call("push", codec.MsgpackSpecRpcMultiArgs{c.name, points},
 		&result)
@@ -46,6 +46,13 @@ func (c *ClusteringClient) GetCoreMembers() [][]WeightedDatum {
 	var result [][]WeightedDatum
 	c.client.Call("get_core_members", codec.MsgpackSpecRpcMultiArgs{c.name},
 		&result)
+	return result
+}
+
+func (c *ClusteringClient) GetCoreMembersLight() [][]WeightedIndex {
+	var result [][]WeightedIndex
+	c.client.Call("get_core_members_light",
+		codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
 
@@ -68,6 +75,14 @@ func (c *ClusteringClient) GetNearestMembers(
 	var result []WeightedDatum
 	c.client.Call("get_nearest_members", codec.MsgpackSpecRpcMultiArgs{c.name,
 		point}, &result)
+	return result
+}
+
+func (c *ClusteringClient) GetNearestMembersLight(
+	point common.Datum) []WeightedIndex {
+	var result []WeightedIndex
+	c.client.Call("get_nearest_members_light",
+		codec.MsgpackSpecRpcMultiArgs{c.name, point}, &result)
 	return result
 }
 
