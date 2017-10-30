@@ -1,4 +1,4 @@
-// This file is auto-generated from recommender.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.9.4-42-g70f7539/master
+// This file is auto-generated from recommender.idl(1.0.5-6-g051a909) with jenerator version 0.9.4-42-g70f7539/develop
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -72,11 +72,43 @@ func (c *RecommenderClient) SimilarRowFromID(id string,
 	return result
 }
 
+func (c *RecommenderClient) SimilarRowFromIDAndScore(id string,
+	score float64) []IDWithScore {
+	var result []IDWithScore
+	c.client.Call("similar_row_from_id_and_score",
+		codec.MsgpackSpecRpcMultiArgs{c.name, id, score}, &result)
+	return result
+}
+
+func (c *RecommenderClient) SimilarRowFromIDAndRate(id string,
+	rate float64) []IDWithScore {
+	var result []IDWithScore
+	c.client.Call("similar_row_from_id_and_rate",
+		codec.MsgpackSpecRpcMultiArgs{c.name, id, rate}, &result)
+	return result
+}
+
 func (c *RecommenderClient) SimilarRowFromDatum(row common.Datum,
 	size int32) []IDWithScore {
 	var result []IDWithScore
 	c.client.Call("similar_row_from_datum",
 		codec.MsgpackSpecRpcMultiArgs{c.name, row, size}, &result)
+	return result
+}
+
+func (c *RecommenderClient) SimilarRowFromDatumAndScore(row common.Datum,
+	score float64) []IDWithScore {
+	var result []IDWithScore
+	c.client.Call("similar_row_from_datum_and_score",
+		codec.MsgpackSpecRpcMultiArgs{c.name, row, score}, &result)
+	return result
+}
+
+func (c *RecommenderClient) SimilarRowFromDatumAndRate(row common.Datum,
+	rate float64) []IDWithScore {
+	var result []IDWithScore
+	c.client.Call("similar_row_from_datum_and_rate",
+		codec.MsgpackSpecRpcMultiArgs{c.name, row, rate}, &result)
 	return result
 }
 
