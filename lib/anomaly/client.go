@@ -1,4 +1,4 @@
-// This file is auto-generated from anomaly.idl(0.9.0-26-g051b301) with jenerator version 0.9.4-42-g70f7539/develop
+// This file is auto-generated from anomaly.idl(1.0.6-6-g2cf96c3) with jenerator version 0.9.4-42-g70f7539/develop
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -38,6 +38,13 @@ func (c *AnomalyClient) ClearRow(id string) bool {
 func (c *AnomalyClient) Add(row common.Datum) IDWithScore {
 	var result IDWithScore
 	c.client.Call("add", codec.MsgpackSpecRpcMultiArgs{c.name, row}, &result)
+	return result
+}
+
+func (c *AnomalyClient) AddBulk(data []common.Datum) []string {
+	var result []string
+	c.client.Call("add_bulk", codec.MsgpackSpecRpcMultiArgs{c.name, data},
+		&result)
 	return result
 }
 
