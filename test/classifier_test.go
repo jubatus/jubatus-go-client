@@ -49,7 +49,7 @@ func TestGetLabels(t *testing.T) {
 	defer jubatus.Kill()
 	cli := _getClient(t, jubatus)
 	cli.SetLabel("label")
-	var label = map[string]int64{"label": 0}
+	var label = map[string]uint64{"label": 0}
 	if !(reflect.DeepEqual(cli.GetLabels(), label)) {
 		t.Errorf("got invalid get_labels response")
 		t.FailNow()
