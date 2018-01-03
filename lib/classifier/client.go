@@ -41,8 +41,8 @@ func (c *ClassifierClient) Classify(data []common.Datum) [][]EstimateResult {
 	return result
 }
 
-func (c *ClassifierClient) GetLabels() map[string]int64 {
-	var result map[string]int64
+func (c *ClassifierClient) GetLabels() map[string]uint64 {
+	var result map[string]uint64
 	c.client.Call("get_labels", codec.MsgpackSpecRpcMultiArgs{c.name}, &result)
 	return result
 }
