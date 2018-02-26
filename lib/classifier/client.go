@@ -1,4 +1,4 @@
-// This file is auto-generated from classifier.idl(0.8.9-17-gd4c007f) with jenerator version 0.9.4-42-g70f7539/develop
+// This file is auto-generated from classifier.idl(0.8.9-17-gd4c007f) with jenerator version 1.0.7-6-g1ae743a/master
 // *** DO NOT EDIT ***
 
 package jubatus_client

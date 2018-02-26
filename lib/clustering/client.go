@@ -1,4 +1,4 @@
-// This file is auto-generated from clustering.idl(0.9.4-18-g4935b2b) with jenerator version 0.9.4-42-g70f7539/develop
+// This file is auto-generated from clustering.idl(0.9.4-18-g4935b2b) with jenerator version 1.0.7-6-g1ae743a/master
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -35,8 +35,8 @@ func (c *ClusteringClient) Push(points []IndexedPoint) bool {
 	return result
 }
 
-func (c *ClusteringClient) GetRevision() int32 {
-	var result int32
+func (c *ClusteringClient) GetRevision() uint32 {
+	var result uint32
 	c.client.Call("get_revision", codec.MsgpackSpecRpcMultiArgs{c.name},
 		&result)
 	return result

@@ -1,4 +1,4 @@
-// This file is auto-generated from recommender.idl(1.0.5-6-g051a909) with jenerator version 0.9.4-42-g70f7539/develop
+// This file is auto-generated from recommender.idl(1.0.5-6-g051a909) with jenerator version 1.0.7-6-g1ae743a/master
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -65,7 +65,7 @@ func (c *RecommenderClient) CompleteRowFromDatum(
 }
 
 func (c *RecommenderClient) SimilarRowFromID(id string,
-	size int32) []IDWithScore {
+	size uint32) []IDWithScore {
 	var result []IDWithScore
 	c.client.Call("similar_row_from_id", codec.MsgpackSpecRpcMultiArgs{c.name,
 		id, size}, &result)
@@ -89,7 +89,7 @@ func (c *RecommenderClient) SimilarRowFromIDAndRate(id string,
 }
 
 func (c *RecommenderClient) SimilarRowFromDatum(row common.Datum,
-	size int32) []IDWithScore {
+	size uint32) []IDWithScore {
 	var result []IDWithScore
 	c.client.Call("similar_row_from_datum",
 		codec.MsgpackSpecRpcMultiArgs{c.name, row, size}, &result)
