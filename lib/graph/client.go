@@ -1,4 +1,4 @@
-// This file is auto-generated from graph.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.9.4-42-g70f7539/develop
+// This file is auto-generated from graph.idl(0.6.4-33-gcc8d7ca) with jenerator version 1.0.7-6-g1ae743a/master
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -48,21 +48,21 @@ func (c *GraphClient) UpdateNode(node_id string,
 	return result
 }
 
-func (c *GraphClient) CreateEdge(node_id string, e Edge) int64 {
-	var result int64
+func (c *GraphClient) CreateEdge(node_id string, e Edge) uint64 {
+	var result uint64
 	c.client.Call("create_edge", codec.MsgpackSpecRpcMultiArgs{c.name, node_id,
 		e}, &result)
 	return result
 }
 
-func (c *GraphClient) UpdateEdge(node_id string, edge_id int64, e Edge) bool {
+func (c *GraphClient) UpdateEdge(node_id string, edge_id uint64, e Edge) bool {
 	var result bool
 	c.client.Call("update_edge", codec.MsgpackSpecRpcMultiArgs{c.name, node_id,
 		edge_id, e}, &result)
 	return result
 }
 
-func (c *GraphClient) RemoveEdge(node_id string, edge_id int64) bool {
+func (c *GraphClient) RemoveEdge(node_id string, edge_id uint64) bool {
 	var result bool
 	c.client.Call("remove_edge", codec.MsgpackSpecRpcMultiArgs{c.name, node_id,
 		edge_id}, &result)
@@ -132,7 +132,7 @@ func (c *GraphClient) GetNode(node_id string) Node {
 	return result
 }
 
-func (c *GraphClient) GetEdge(node_id string, edge_id int64) Edge {
+func (c *GraphClient) GetEdge(node_id string, edge_id uint64) Edge {
 	var result Edge
 	c.client.Call("get_edge", codec.MsgpackSpecRpcMultiArgs{c.name, node_id,
 		edge_id}, &result)
@@ -153,7 +153,7 @@ func (c *GraphClient) RemoveGlobalNode(node_id string) bool {
 	return result
 }
 
-func (c *GraphClient) CreateEdgeHere(edge_id int64, e Edge) bool {
+func (c *GraphClient) CreateEdgeHere(edge_id uint64, e Edge) bool {
 	var result bool
 	c.client.Call("create_edge_here", codec.MsgpackSpecRpcMultiArgs{c.name,
 		edge_id, e}, &result)

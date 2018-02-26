@@ -1,4 +1,4 @@
-// This file is auto-generated from nearest_neighbor.idl(0.8.2-20-g8e4dc3b) with jenerator version 0.9.4-42-g70f7539/develop
+// This file is auto-generated from nearest_neighbor.idl(0.8.2-20-g8e4dc3b) with jenerator version 1.0.7-6-g1ae743a/master
 // *** DO NOT EDIT ***
 
 package jubatus_client
@@ -43,7 +43,7 @@ func (c *NearestNeighborClient) SetRow(id string, d common.Datum) bool {
 }
 
 func (c *NearestNeighborClient) NeighborRowFromID(id string,
-	size int32) []IDWithScore {
+	size uint32) []IDWithScore {
 	var result []IDWithScore
 	c.client.Call("neighbor_row_from_id", codec.MsgpackSpecRpcMultiArgs{c.name,
 		id, size}, &result)
@@ -51,7 +51,7 @@ func (c *NearestNeighborClient) NeighborRowFromID(id string,
 }
 
 func (c *NearestNeighborClient) NeighborRowFromDatum(query common.Datum,
-	size int32) []IDWithScore {
+	size uint32) []IDWithScore {
 	var result []IDWithScore
 	c.client.Call("neighbor_row_from_datum",
 		codec.MsgpackSpecRpcMultiArgs{c.name, query, size}, &result)
@@ -59,7 +59,7 @@ func (c *NearestNeighborClient) NeighborRowFromDatum(query common.Datum,
 }
 
 func (c *NearestNeighborClient) SimilarRowFromID(id string,
-	ret_num int32) []IDWithScore {
+	ret_num uint32) []IDWithScore {
 	var result []IDWithScore
 	c.client.Call("similar_row_from_id", codec.MsgpackSpecRpcMultiArgs{c.name,
 		id, ret_num}, &result)
@@ -67,7 +67,7 @@ func (c *NearestNeighborClient) SimilarRowFromID(id string,
 }
 
 func (c *NearestNeighborClient) SimilarRowFromDatum(query common.Datum,
-	ret_num int32) []IDWithScore {
+	ret_num uint32) []IDWithScore {
 	var result []IDWithScore
 	c.client.Call("similar_row_from_datum",
 		codec.MsgpackSpecRpcMultiArgs{c.name, query, ret_num}, &result)
